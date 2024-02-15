@@ -5,6 +5,16 @@ pipeline {
         DOCKER_IMAGE_NAME = 'calculator'
         GITHUB_REPO_URL = 'https://github.com/AnkitaAgrawal12/Docker-Demo.git'
     }
+    stage('Cleanup') {
+            steps {
+                // Remove specific Docker containers
+                sh 'docker rm -f calculator'
+                
+                // Or, you can remove containers by their IDs
+                // sh 'docker rm -f $(docker ps -aqf "name=container1")'
+                // sh 'docker rm -f $(docker ps -aqf "name=container2")'
+            }
+        }
 
     stages {
         stage('Checkout') {

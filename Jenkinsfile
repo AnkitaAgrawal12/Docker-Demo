@@ -9,12 +9,10 @@ pipeline {
     stages {
         stage('Cleanup') {
             steps {
+                script{   
                 // Remove specific Docker containers
                 sh 'docker rm -f calculator'
-                
-                // Or, you can remove containers by their IDs
-                // sh 'docker rm -f $(docker ps -aqf "name=container1")'
-                // sh 'docker rm -f $(docker ps -aqf "name=container2")'
+                }
             }
         }
         
